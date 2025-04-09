@@ -1,33 +1,74 @@
+import 'package:exam/page/drawer.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
+class FileManagerScreen extends StatelessWidget {
+  const FileManagerScreen({super.key});
 
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text("FILE"),
+        backgroundColor: Colors.green[900],
+        actions: [
+          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Welcome to the Home Page!'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/second');
-              },
-              child: const Text('Go to Second Page'),
+      drawer: const DrawerD(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text("Phone Storage\nTotal: 244GB    Available: 135GB"),
+          ),
+          const Divider(),
+          Expanded(
+            child: ListView(
+              children: const [
+                FileCategoryTile(icon: Icons.description, label: "Documents (45)", desc: "Includes Word, PPT, Excel, WPS, etc."),
+                FileCategoryTile(icon: Icons.book, label: "Ebooks (88)", desc: "Includes .umd, .ebk, .txt, .chm, etc."),
+                FileCategoryTile(icon: Icons.android, label: "Apks (0)", desc: "Includes .apk files"),
+                FileCategoryTile(icon: Icons.archive, label: "Archives (4)", desc: "Includes .7z, .rar, .zip, .iso, etc."),
+                FileCategoryTile(icon: Icons.insert_drive_file, label: "Big files (41)", desc: "Includes files > 50 MB"),
+              ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 4,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.playlist_play), label: "PLAYLIST"),
+          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: "TOMPS"),
+          BottomNavigationBarItem(icon: Icon(Icons.clear), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: "SOCIAL"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "ME"),
+        ],
+      ),
+    );
+  }
+}
+
+class FileCategoryTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String desc;
+
+  const FileCategoryTile({super.key, required this.icon, required this.label, required this.desc});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon, size: 32),
+      title: Text(label),
+      subtitle: Text(desc),
+      onTap: () {},
     );
   }
 }
