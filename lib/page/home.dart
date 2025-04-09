@@ -8,23 +8,36 @@ class FileManagerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("FILE"),
-        backgroundColor: Colors.green[900],
-        actions: [
-          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
-        ],
-      ),
-      drawer: const DrawerD(),
+      backgroundColor: Colors.grey[400],
+          appBar: AppBar(
+            title: const Text("FILE"),
+            backgroundColor: Colors.green[900],
+          ),
+          endDrawer: const DrawerD(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text("Phone Storage\nTotal: 244GB    Available: 135GB"),
+
+          Row(
+            children: [
+               Text("Phone", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+              const SizedBox(width: 18),
+              Text("File", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+            ],
           ),
-          const Divider(),
+          Row(
+            
+            children: [
+            const SizedBox(width: 18),
+            Icon(Icons.storage),
+            Padding(
+            padding: EdgeInsets.all(16.0),
+            
+            child: Text("Phone Storage\nTotal: 244GB    Available: 135GB"),
+          )
+            ],
+          ),
+
           Expanded(
             child: ListView(
               children: const [
