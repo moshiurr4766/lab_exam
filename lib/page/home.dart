@@ -8,7 +8,7 @@ class FileManagerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: const Color.fromARGB(255, 207, 175, 175),
           appBar: AppBar(
             title: const Text("FILE"),
             backgroundColor: Colors.green[900],
@@ -17,13 +17,41 @@ class FileManagerScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: 40),
+              SizedBox(width: 20),
                Text("Phone", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
-              const SizedBox(width: 18),
+              SizedBox(width: 18),
+              Text("Pob", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+              SizedBox(width: 18),
+              Text("Storage", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+              SizedBox(width: 18),
+               Text("Phone", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+              SizedBox(width: 18),
+              Text("Pob", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+              SizedBox(width: 18),
+              Text("Storage", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
+              SizedBox(width: 18),
               Text("File", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey[800])),
             ],
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Search files",
+                prefixIcon: const Icon(Icons.search),
+                filled: true,
+                fillColor: const Color.fromARGB(255, 175, 116, 116),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
           ),
           Row(
             
@@ -85,3 +113,8 @@ class FileCategoryTile extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
